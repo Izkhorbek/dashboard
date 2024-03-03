@@ -1,0 +1,139 @@
+.clients-page {
+  border: 1px solid rgb(222, 222, 222);
+  height: 89vh;
+  margin: 10px;
+  border-radius: 10px;
+}
+.clients-page_title {
+  text-align: center;
+  margin: 17px;
+}
+
+.clients-page__container {
+  display: grid;
+  grid-template-columns: 8% 15% 15% 8% 10% 12% 8% 11% 12%;
+  grid-template-rows: repeat(auto, 30px);
+  text-align: center;
+  background-color: rgb(234, 234, 234);
+}
+
+.clients-page__container > div {
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.clients-page__container div {
+  line-height: 30px;
+}
+
+.clients-page__container > div input,
+.clients-page__container > div select {
+  width: 90%;
+  height: 60%;
+}
+
+.clients-col-1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+.clients-col-1--1 {
+  grid-column: 1;
+  grid-row: 2;
+}
+.clients-col-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.clients-col-2--1 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.clients-col-3 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.clients-col-3--1 {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.clients-col-4 {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.clients-col-4--1 {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.clients-col-5 {
+  grid-column: 5;
+  grid-row: 1;
+  line-height: none;
+}
+.clients-col-5--1 {
+  grid-column: 5;
+  grid-row: 2;
+}
+
+.clients-col-6 {
+  grid-column: 6;
+  grid-row: 1;
+}
+.clients-col-6--1 {
+  grid-column: 6;
+  grid-row: 2;
+}
+
+.clients-col-7 {
+  grid-column: 7;
+  grid-row: 1;
+}
+.clients-col-7--1 {
+  grid-column: 7;
+  grid-row: 2;
+}
+
+.clients-col-8 {
+  grid-column: 8;
+  grid-row: 1;
+}
+.clients-col-8--1 {
+  grid-column: 8;
+  grid-row: 2;
+}
+
+.clients-col-9 {
+  grid-column: 9;
+  grid-row: 1;
+}
+
+.clients-col-9--1 {
+  grid-column: 9;
+  grid-row: 2;
+}
+
+.clients-page-info__container {
+  display: grid;
+  grid-template-columns: 8% 15% 15% 8% 10% 12% 8% 11% 12%;
+  grid-template-rows: repeat(auto, 60px);
+  text-align: center;
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.clients-page__pagination {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.clients-orders:hover,
+.clients-active-device:hover {
+  cursor: pointer;
+  color: rgb(54, 54, 223);
+  font-weight: bold;
+}

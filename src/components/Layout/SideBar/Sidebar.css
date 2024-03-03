@@ -1,0 +1,101 @@
+.contaner {
+  display: flex;
+}
+
+.nav-sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  position: relative;
+  width: 16rem;
+  height: 100vh;
+  overflow: hidden;
+  background: white;
+}
+
+.sidebar__logo {
+  top: 18px;
+  left: 0;
+  padding: 0;
+  height: 10vh;
+  width: 125px;
+  border-radius: 50%;
+  background-size: 7rem;
+  background-image: url("../../../assets/images/menuLogo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #505050;
+}
+.sidebar__main {
+  padding-top: 0.5rem;
+  height: 70%;
+  position: relative;
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.sidebar__main li {
+  padding: 10px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+  list-style: none;
+}
+
+.sidebar__main li:hover,
+.sidebar--active {
+  background: #f1f1f1;
+}
+
+.sidebar__item > ul {
+  height: 0;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.sidebar__item > ul li a {
+  margin-left: 1rem;
+}
+
+.sidebar__item:hover > ul {
+  height: 90px;
+  opacity: 1;
+}
+
+.sidebar__item > ul li:hover {
+  background: #aeaeae;
+}
+
+.nav-sidebar a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.nav-sidebar a span {
+  overflow: hidden;
+}
+.nav-sidebar a img {
+  height: 1.5rem;
+  width: 1.5;
+}
+
+.sidebar__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  color: gray;
+  opacity: 0.5;
+  font-size: large;
+  padding-left: 1rem;
+}
+
+.sidebar__info h1 {
+  border-bottom: 2px solid #505050;
+  margin-bottom: 1rem;
+}

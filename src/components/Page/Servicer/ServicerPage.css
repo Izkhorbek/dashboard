@@ -1,0 +1,128 @@
+.servicer-page {
+  border: 1px solid rgb(222, 222, 222);
+  height: 89vh;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.servicer-page_title {
+  text-align: center;
+  margin: 17px;
+}
+
+.servicer-page__container {
+  display: grid;
+  grid-template-columns: 8% 8% 15% 17% 15% 14% 11% 12%;
+  grid-template-rows: repeat(2, 30px);
+  text-align: center;
+  background-color: rgb(234, 234, 234);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.servicer-page__container > div {
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.servicer-page__container div {
+  line-height: 30px;
+}
+.servicer-page__container > div input {
+  width: 90%;
+  height: 60%;
+}
+.servicer-page__container > div select {
+  width: 90%;
+  height: 60%;
+}
+
+.border {
+  border: 1px, solid, rgb(195, 187, 187);
+}
+.servicer-col-1 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.servicer-col-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.servicer-col-2--1 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.servicer-col-3 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.servicer-col-3--1 {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.servicer-col-4 {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.servicer-col-4--1 {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.servicer-col-5 {
+  grid-column: 5;
+  grid-row: 1;
+}
+.servicer-col-5--1 {
+  grid-column: 5;
+  grid-row: 2;
+}
+
+.servicer-col-6 {
+  grid-column: 6;
+  grid-row: 1;
+}
+.servicer-col-6--1 {
+  grid-column: 6;
+  grid-row: 2;
+}
+
+.servicer-col-7 {
+  grid-column: 7;
+  grid-row: 1;
+}
+.servicer-col-7--1 {
+  grid-column: 7;
+  grid-row: 2;
+}
+
+.servicer-col-8 {
+  grid-column: 8;
+  grid-row: 1;
+}
+.servicer-col-8--1 {
+  grid-column: 8;
+  grid-row: 2;
+}
+
+.servicer-page-info__container {
+  display: grid;
+  grid-template-columns: 8% 8% 15% 17% 15% 14% 11% 12%;
+  grid-template-rows: repeat(auto, 60px);
+  text-align: center;
+  border: 1px solid rgb(222, 222, 222);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.servicer-page__pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px;
+}
