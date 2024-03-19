@@ -5,7 +5,7 @@ import {
   AppealsPage,
   ClientsPage,
   CommentsPage,
-  Details,
+  DetailsPage,
   Header,
   MainWindow,
   MessagesPage,
@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<MainWindow />} />
           <Route path="/users/servicer" element={<ServicerPage />} />
           <Route path="/users/client" element={<ClientsPage />} />
-          <Route path="/users/details" element={<Details />} />
+          <Route path="/users/details" element={<DetailsPage />} />
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/comments" element={<CommentsPage />}></Route>
           <Route path="/appeals" element={<AppealsPage />} />

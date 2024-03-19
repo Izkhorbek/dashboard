@@ -1,6 +1,8 @@
 import React from "react";
 import "./ServicerPage.css";
+import { useNavigate } from "react-router-dom";
 function ServicerPage() {
+  const navigate = useNavigate();
   return (
     <div className="servicer-page">
       <h2 className="servicer-page_title">
@@ -45,7 +47,10 @@ function ServicerPage() {
           </select>
         </div>
       </div>
-      <div className="servicer-page-info__container">
+      <div
+        onClick={() => navigate("/users/details")}
+        className="servicer-page-info__container"
+      >
         <div className="servicer-col-1">Surati</div>
         <div className="servicer-col-2--1">dff</div>
         <div className="servicer-col-3--1">Name</div>

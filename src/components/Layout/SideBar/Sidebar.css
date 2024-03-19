@@ -15,16 +15,18 @@
 }
 
 .sidebar__logo {
-  top: 18px;
-  left: 0;
-  padding: 0;
-  height: 10vh;
-  width: 125px;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo__photo {
+  width: 4rem;
+  background-size: 4rem;
   border-radius: 50%;
-  background-size: 7rem;
-  background-image: url("../../../assets/images/menuLogo.png");
+  margin-left: 6rem;
+  background-image: url("../../../assets/images/logo.png");
   background-repeat: no-repeat;
-  background-position: center;
   background-color: #505050;
 }
 .sidebar__main {

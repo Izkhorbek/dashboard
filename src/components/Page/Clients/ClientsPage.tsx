@@ -1,8 +1,9 @@
 import React from "react";
 import "./ClientsPage.css";
 import "../../../common-styles/common-styles.css";
+import { useNavigate } from "react-router-dom";
 function ClientsPage() {
-  const handleOrders = () => {};
+  const navigate = useNavigate();
   return (
     <div className="clients-page">
       <h2 className="clients-page_title">
@@ -61,12 +62,7 @@ function ClientsPage() {
         <div className="clients-col-2--1">Ibrohim </div>
         <div className="clients-col-3--1">Karimov</div>
         <div className="clients-col-4--1 clients-orders">15</div>
-        <div
-          onClick={handleOrders}
-          className="clients-col-5--1 clients-active-device"
-        >
-          2
-        </div>
+        <div className="clients-col-5--1 clients-active-device">2</div>
         <div className="clients-col-6--1">+998905874514</div>
         <div className="clients-col-7--1">
           <select className="">

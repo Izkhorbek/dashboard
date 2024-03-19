@@ -1,0 +1,36 @@
+.details-page {
+  border: 1px solid rgb(222, 222, 222);
+  height: 89vh;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+.details-page__title {
+  text-align: center;
+  margin: 17px;
+  position: sticky;
+  z-index: 1;
+  border: 1px solid black;
+}
+
+.details-page__container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.details-page__container > div {
+  display: flex;
+  flex-direction: row;
+  line-height: 2.5rem;
+}
+
+.details-page__container > div div:first-child {
+  width: 15rem;
+  font-weight: bold;
+}
+
+.details-page__container > div:nth-child(even) {
+  background-color: #f1f1f1;
+}

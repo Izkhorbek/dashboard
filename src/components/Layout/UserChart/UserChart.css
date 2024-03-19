@@ -1,5 +1,4 @@
 .statistic-container {
-  /* position: absolute; */
   display: grid;
   gap: 10px;
   width: 50rem;

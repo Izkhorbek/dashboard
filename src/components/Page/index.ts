@@ -9,7 +9,9 @@ import CommentsPage from "./Comments/CommentsPage";
 import AppealsPage from "./Appeals/AppealsPage";
 import MessagesPage from "./Messages/MessagesPage";
 import SettingsPage from "./Settings/SettingsPage";
+import DetailsPage from "./Details/DetailsPage";
 export {
+  DetailsPage,
   MessagesPage,
   SettingsPage,
   AppealsPage,

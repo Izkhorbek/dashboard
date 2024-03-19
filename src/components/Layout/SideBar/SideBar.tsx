@@ -6,12 +6,16 @@ import settingLogo from "../../../assets/images/settings.png";
 import sendLetterLogo from "../../../assets/images/send-letter.png";
 import shoppingListLogo from "../../../assets/images/shopping-list.png";
 import usersLogo from "../../../assets/images/users.png";
+import logo from "../../../assets/images/logo.png";
 
 function SideBar() {
   return (
     <div className="container">
       <nav className="nav-sidebar">
-        <div className="sidebar__logo"></div>
+        <div className="sidebar__logo">
+          <div className="logo__photo"></div>
+          <div className="logo__icon"></div>
+        </div>
         <ul className="sidebar__main">
           <li className="sidebar__item">
             <a href="/">

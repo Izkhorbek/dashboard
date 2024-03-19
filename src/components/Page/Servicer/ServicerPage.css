@@ -119,6 +119,9 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+.servicer-page-info__container:hover {
+  cursor: pointer;
+}
 
 .servicer-page__pagination {
   display: flex;
