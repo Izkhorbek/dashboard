@@ -1,79 +1,108 @@
 import React from "react";
 import "./MainWindow.css";
 //var CanvasJSReact = require('@canvasjs/react-charts');
-import { Chart } from "react-google-charts";
-export const data = [
-  ["Users", "Dasturdan foydalanuvchilar"],
-  ["Xizmat beruchi", 5],
-  ["Xizmat oluvchi", 11],
-];
+import UserChart from "../../Layout/UserChart/UserChart";
+import Chart from "react-google-charts";
 
-export const options = {
-  fontSize: 12,
-  legend: {
-    position: "bottom",
-    textStyle: {
-      color: "233238",
-      fontSize: 12,
-    },
-  },
-  chartArea: {
-    left: 0,
-    width: "100%",
-    height: "70%",
-  },
-  colors: ["#F17623", "#4875CA"],
-  containerId: "chart_div",
-};
 function MainWindow() {
+  const allUserData = {
+    title: ["Users", "Dasturdan foydalanuvchilar"],
+    servicers: ["Xizmat beruchi", 5],
+    clients: ["Xizmat oluvchi", 11],
+  };
+
+  const activeUserData = {
+    title: ["Users", "Dasturdan foydalanuvchilar"],
+    servicers: ["Xizmat beruchi", 4],
+    clients: ["Xizmat oluvchi", 50],
+  };
+
+  const allOrders = [
+    ["Month", "Orders"],
+    ["yanvar", 1000],
+    ["fevral", 1170],
+    ["mart", 660],
+    ["aprel", 1030],
+    ["may", 1030],
+    ["iyun", 1030],
+    ["iyul", 1030],
+    ["avgust", 1030],
+    ["sentabr", 1030],
+    ["oktabr", 1030],
+    ["noyabr", 1030],
+    ["dekabr", 1030],
+  ];
+
+  const options = {
+    title: "BUYURMALAR KO'RSATKICHLARI",
+    titleTextStyle: {
+      fontfamily: "Times New Roman Times serif",
+      alignContent: "center",
+      fontSize: 20,
+    },
+    hAxis: { title: "Month", titleTextStyle: { color: "#A0B294" } },
+    vAxis: { minValue: 0 },
+    legend: "none",
+    chartArea: {
+      width: "87%",
+      height: "60%",
+      backgroundColor: {
+        stroke: "#4322c0",
+        strokeWidth: 1,
+      },
+    },
+  };
   return (
     <div className="dashboard_container">
       <div className="dashboard__overall-users">
         <h3>DASTURDAN FOYDALANUVCHILAR</h3>
-        <div className="dashboard__users-chart">
-          <div>
-            <Chart
-              chartType="PieChart"
-              data={data}
-              options={options}
-              height="100%"
-            />
-          </div>
-          <div className="dashboard__users-chart--info">
-            <div className="chart--info--overall">
-              <h6>Umumiy foydalanuvchilar</h6>
-              <h3>5000</h3>
-              <h5>Dona</h5>
-            </div>
-            <div className="chart--info--servicer">
-              <h6>Xizmat beruvchilar</h6>
-              <h3>5000 dona</h3>
-              <h5>20 %</h5>
-            </div>
-            <div className="chart--info--client">
-              <h6>Xizmat beruvchilar</h6>
-              <h3>5000 dona</h3>
-              <h5>80 %</h5>
-            </div>
-          </div>
-        </div>
+        <UserChart
+          title={allUserData.title}
+          servicers={allUserData.servicers}
+          clients={allUserData.clients}
+        />
       </div>
       <div className="dashboard__current-users">
-        <h4>Ayni vaqtda foydalanuvchilar</h4>
+        <h3>AYNI VAQTDA FOYDALANUVCHILAR</h3>
+        <UserChart
+          title={activeUserData.title}
+          servicers={activeUserData.servicers}
+          clients={activeUserData.clients}
+        />
       </div>
       <div className="dashboard__info">
         <div className="dashboard__active-service">
-          <h4>Amaldagi mavjud xizmatlar</h4>
+          <div>Amaldagi mavjud xizmatlar</div>
+          <h1>500</h1>
+          <h3>Dona</h3>
         </div>
         <div className="dashboard__black-list">
-          <h4>Qora Ro'yxatga tushgan foydalanuvchilar</h4>
+          <div>Qora Ro'yxatga tushgan foydalanuvchilar</div>
+          <h1>500</h1>
+          <h3>Dona</h3>
         </div>
         <div className="dashboard__server-memory">
-          <h4>Serverning xotirasi</h4>
+          <h3 style={{ textAlign: "center" }}>Serverning xotirasi</h3>
+          <progress
+            value={75}
+            max={100}
+            style={{
+              width: "95%",
+              height: "30px",
+              marginLeft: "10px",
+            }}
+          />
+          <h6 style={{ marginLeft: "10px" }}>1000MB xotiradan 700MB qoldi.</h6>
         </div>
       </div>
       <div className="dashboard__order-rate">
-        <h4>Buyurtmalar ko'rsatkichi</h4>
+        <Chart
+          chartType="AreaChart"
+          data={allOrders}
+          options={options}
+          height="100%"
+          loader={<div>Loading Chart</div>}
+        ></Chart>
       </div>
     </div>
   );

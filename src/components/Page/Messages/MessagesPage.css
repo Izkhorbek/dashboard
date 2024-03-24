@@ -1,5 +1,8 @@
 .messages-page {
+  height: 89vh;
   margin: 10px;
+  border-radius: 10px;
+  background-color: white;
 }
 
 .messages-page__title {

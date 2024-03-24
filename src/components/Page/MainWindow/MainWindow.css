@@ -7,7 +7,6 @@
 }
 
 .dashboard_container > div {
-  border: 1px solid red;
   border-radius: 10px;
 }
 
@@ -15,6 +14,7 @@
   grid-row: 1;
   grid-column: 1;
   height: 50vh;
+  background-color: white;
 }
 
 .dashboard__overall-users > h3 {
@@ -27,44 +27,20 @@
   flex-direction: row;
 }
 
-.dashboard__users-chart {
-  height: 44vh;
-  margin-left: 2px;
-}
-
-.dashboard__users-chart > div:nth-of-type(1) {
-  flex: 75%;
-}
-
-.dashboard__users-chart > div:nth-of-type(2) {
-  flex: 25%;
-}
-
-.dashboard__users-chart--info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-right: 5px;
-  width: 100%;
-}
-
-.chart--info--overall {
-  text-align: center;
-  border-bottom: 1px solid black;
-}
-.chart--info--servicer {
-  border-left: 10px solid #f17623;
-  padding-left: 5px;
-}
-.chart--info--client {
-  border-left: 10px solid #4875ca;
-  padding-left: 5px;
-}
-
 .dashboard__current-users {
   grid-row: 1;
   grid-column: 2;
   height: 50vh;
+  background-color: white;
+}
+.dashboard__current-users > h3 {
+  line-height: 5vh;
+  text-align: center;
+}
+
+.dashboard__current-users > div {
+  display: flex;
+  flex-direction: row;
 }
 
 .dashboard__info {
@@ -73,8 +49,56 @@
   height: 35vh;
 }
 
+.dashboard__info {
+  display: grid;
+  grid-template-columns: 49% 2% 49%;
+  grid-template-rows: 63% 2% 35%;
+}
+
+.dashboard__info > div {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.dashboard__active-service {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #137700;
+  text-align: center;
+  color: rgb(231, 221, 221);
+}
+.dashboard__active-service > div {
+  font-size: 26px;
+}
+.dashboard__black-list {
+  grid-row: 1;
+  grid-column: 3;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  color: rgb(231, 221, 221);
+}
+
+.dashboard__black-list > div {
+  font-size: 24px;
+}
+.dashboard__server-memory {
+  grid-row: 3;
+  grid-column: 1 / span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+}
+
 .dashboard__order-rate {
   grid-row: 2;
   grid-column: 2;
   height: 35vh;
+  overflow: hidden;
+  background-color: white;
 }

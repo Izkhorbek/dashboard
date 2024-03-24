@@ -1,42 +1,59 @@
 import React from "react";
 import "./UserChart.css";
-function UserChart() {
+import { Chart } from "react-google-charts";
+import IUserData from "../../../interfaces/interfaces";
+
+export const options = {
+  fontSize: 12,
+  legend: {
+    position: "bottom",
+    textStyle: {
+      color: "233238",
+      fontSize: 12,
+    },
+  },
+  chartArea: {
+    left: 0,
+    width: "100%",
+    height: "70%",
+  },
+  colors: ["#F17623", "#4875CA"],
+  containerId: "chart_div",
+};
+
+const UserChart = (props: IUserData) => {
+  const chartData = [props.title, props.servicers, props.clients];
+  let servicers: number = props.servicers[1] as number;
+  let clients: number = props.clients[1] as number;
   return (
-    <div className="chart">
-      <div className="chart__title ">
-        <div className="chart__container">
-          <div className="chart__diagram"></div>
-          <div className="chart__info">
-            {/* Umumiy foydalanuvchilar */}
-            <div className="overall-user">
-              <h3>Umumiy foydalanuvchilar</h3>
-              <h1>5000</h1>
-              <h4>dona</h4>
-            </div>
-            {/* Xizmat ko'rsatuvchilar */}
-            <div className="service-provider">
-              <div className="service-provider__rect"></div>
-              <div className="service-provider__info">
-                <h3>Xizmat beruvchilar</h3>
-                <h1>1000</h1> <span>dona</span>
-                <h4>20%</h4>
-              </div>
-            </div>
-            {/* Xizmat oluvchilar */}
-            <div className="client">
-              <div className="client__rect"></div>
-              <div className="client__info">
-                <h3>Xizmat oluvchilar</h3>
-                <h1>4000</h1>
-                <span>dona</span>
-                <h4>80%</h4>
-              </div>
-            </div>
-          </div>
+    <div className="dashboard__users-chart">
+      <div>
+        <Chart
+          chartType="PieChart"
+          data={chartData}
+          options={options}
+          height="100%"
+        />
+      </div>
+      <div className="dashboard__users-chart--info">
+        <div className="chart--info--overall">
+          <h6>Umumiy foydalanuvchilar</h6>
+          <h3>{servicers + clients}</h3>
+          <h5>Dona</h5>
+        </div>
+        <div className="chart--info--servicer">
+          <h6>Xizmat beruvchilar</h6>
+          <h3>{servicers} dona</h3>
+          <h5>20 %</h5>
+        </div>
+        <div className="chart--info--client">
+          <h6>Xizmat beruvchilar</h6>
+          <h3>{clients} dona</h3>
+          <h5>80 %</h5>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default UserChart;
