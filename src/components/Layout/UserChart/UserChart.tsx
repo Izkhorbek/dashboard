@@ -1,7 +1,8 @@
 import React from "react";
 import "./UserChart.css";
 import { Chart } from "react-google-charts";
-import IUserData from "../../../interfaces/interfaces";
+import IUserData from "../../../Interface/IUserData";
+import CalcPersentage from "../../../utility/CalcPersentage";
 
 export const options = {
   fontSize: 12,
@@ -37,19 +38,18 @@ const UserChart = (props: IUserData) => {
       </div>
       <div className="dashboard__users-chart--info">
         <div className="chart--info--overall">
-          <h6>Umumiy foydalanuvchilar</h6>
+          <h4>Total Users </h4>
           <h3>{servicers + clients}</h3>
-          <h5>Dona</h5>
         </div>
         <div className="chart--info--servicer">
-          <h6>Xizmat beruvchilar</h6>
-          <h3>{servicers} dona</h3>
-          <h5>20 %</h5>
+          <h5>Hairdressers</h5>
+          <h3>{servicers}</h3>
+          <h5>{CalcPersentage(servicers + clients, servicers).toFixed(2)} %</h5>
         </div>
         <div className="chart--info--client">
-          <h6>Xizmat beruvchilar</h6>
-          <h3>{clients} dona</h3>
-          <h5>80 %</h5>
+          <h5>Clients</h5>
+          <h3>{clients}</h3>
+          <h5>{CalcPersentage(servicers + clients, clients).toFixed(2)} %</h5>
         </div>
       </div>
     </div>

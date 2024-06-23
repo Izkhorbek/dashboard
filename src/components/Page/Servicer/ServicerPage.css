@@ -4,10 +4,12 @@
   margin: 10px;
   border-radius: 10px;
   background-color: white;
+  overflow: hidden;
 }
 
 .servicer-page_title {
   text-align: center;
+  font-size: 16;
   margin: 17px;
 }
 
@@ -27,6 +29,7 @@
 
 .servicer-page__container div {
   line-height: 30px;
+  text-justify: auto;
 }
 .servicer-page__container > div input {
   width: 90%;
@@ -41,8 +44,11 @@
   border: 1px, solid, rgb(195, 187, 187);
 }
 .servicer-col-1 {
+  display: flex;
   grid-column: 1;
   grid-row: 1 / span 2;
+  justify-content: center;
+  align-items: center;
 }
 
 .servicer-col-2 {
@@ -63,6 +69,7 @@
 .servicer-col-3--1 {
   grid-column: 3;
   grid-row: 2;
+  cursor: pointer;
 }
 
 .servicer-col-4 {
@@ -73,6 +80,7 @@
 .servicer-col-4--1 {
   grid-column: 4;
   grid-row: 2;
+  cursor: pointer;
 }
 
 .servicer-col-5 {
@@ -119,9 +127,7 @@
   border: 1px solid rgb(222, 222, 222);
   margin-left: 10px;
   margin-right: 10px;
-}
-.servicer-page-info__container:hover {
-  cursor: pointer;
+  align-items: center;
 }
 
 .servicer-page__pagination {
@@ -129,4 +135,22 @@
   flex-direction: row;
   gap: 10px;
   margin: 10px;
+}
+
+.servicer-page__pagination > button {
+  width: 50px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.servicer-page__pagination > button:hover {
+  background-color: rgb(19, 56, 241);
+  color: white;
+  cursor: pointer;
+}
+
+.servicer-page__pagination button:last-of-type {
+  margin-left: auto;
 }

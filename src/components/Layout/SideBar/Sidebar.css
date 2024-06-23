@@ -15,20 +15,17 @@
 }
 
 .sidebar__logo {
-  height: 4rem;
   display: flex;
   flex-direction: row;
-}
-
-.logo__photo {
+  height: 4rem;
   width: 4rem;
+  background-color: #505050;
   background-size: 4rem;
   border-radius: 50%;
   margin-left: 6rem;
-  background-image: url("../../../assets/images/logo.png");
-  background-repeat: no-repeat;
-  background-color: #505050;
+  margin-top: 5px;
 }
+
 .sidebar__main {
   padding-top: 0.5rem;
   height: 70%;
@@ -45,8 +42,7 @@
   list-style: none;
 }
 
-.sidebar__main li:hover,
-.sidebar--active {
+.sidebar__main li:hover {
   background: #f1f1f1;
 }
 
@@ -55,6 +51,9 @@
   opacity: 0;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
+}
+.sidebar__item.active {
+  background-color: #ded0d0;
 }
 
 .sidebar__item > ul li a {

@@ -20,6 +20,7 @@
 .dashboard__overall-users > h3 {
   line-height: 5vh;
   text-align: center;
+  color: rgb(7, 7, 207);
 }
 
 .dashboard__overall-users > div {
@@ -36,6 +37,7 @@
 .dashboard__current-users > h3 {
   line-height: 5vh;
   text-align: center;
+  color: #137700;
 }
 
 .dashboard__current-users > div {
@@ -56,7 +58,7 @@
 }
 
 .dashboard__info > div {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 10px;
 }
 .dashboard__active-service {

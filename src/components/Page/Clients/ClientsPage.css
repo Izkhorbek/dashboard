@@ -138,3 +138,21 @@
   color: rgb(54, 54, 223);
   font-weight: bold;
 }
+
+.clients-page__pagination > button {
+  width: 50px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.clients-page__pagination > button:hover {
+  background-color: rgb(19, 56, 241);
+  color: white;
+  cursor: pointer;
+}
+
+.clients-page__pagination button:last-of-type {
+  margin-left: auto;
+}

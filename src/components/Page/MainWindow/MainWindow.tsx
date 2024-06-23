@@ -1,40 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MainWindow.css";
-//var CanvasJSReact = require('@canvasjs/react-charts');
 import UserChart from "../../Layout/UserChart/UserChart";
 import Chart from "react-google-charts";
+import { useGetStatisticsInfoQuery } from "../../../Apis/mainStatisticsApi";
+import IStatisticInfo from "../../../Interface/IStatisticInfo";
+import MainLoader from "../../MainLoader/MainLoader";
+import IMonthlyOrders from "../../../Interface/IMonthlyOrders";
+import monthNames from "../../../utility/CommonDef";
 
 function MainWindow() {
-  const allUserData = {
-    title: ["Users", "Dasturdan foydalanuvchilar"],
-    servicers: ["Xizmat beruchi", 5],
-    clients: ["Xizmat oluvchi", 11],
-  };
+  const [statisticsInfo, SetStatisticsInfo] = useState<IStatisticInfo>();
 
-  const activeUserData = {
+  const { data, isLoading } = useGetStatisticsInfoQuery(null);
+  const [allUserData, setAllUserData] = useState({
     title: ["Users", "Dasturdan foydalanuvchilar"],
-    servicers: ["Xizmat beruchi", 4],
-    clients: ["Xizmat oluvchi", 50],
-  };
+    servicers: ["Hairdressers", 5],
+    clients: ["Clients", 11],
+  });
 
-  const allOrders = [
-    ["Month", "Orders"],
-    ["yanvar", 1000],
-    ["fevral", 1170],
-    ["mart", 660],
-    ["aprel", 1030],
-    ["may", 1030],
-    ["iyun", 1030],
-    ["iyul", 1030],
-    ["avgust", 1030],
-    ["sentabr", 1030],
-    ["oktabr", 1030],
-    ["noyabr", 1030],
-    ["dekabr", 1030],
-  ];
+  const [activeUserData, setActiveUserData] = useState({
+    title: ["Users", "Dasturdan foydalanuvchilar"],
+    servicers: ["Hairdressers", 4],
+    clients: ["Clients", 50],
+  });
+
+  const [monthlyOrders, setMonthlyOrders] = useState<string[][]>();
+
+  useEffect(() => {
+    if (data) {
+      SetStatisticsInfo(data.apiResponse);
+      const { AllHairdressers, AllClients } = data.apiResponse;
+
+      const { CurrHairdressers, CurrClients, MonthlyOrders } = data.apiResponse;
+
+      const monthlyOrdersArray: IMonthlyOrders[] = Object.values(MonthlyOrders);
+
+      const newOrderArray = ([[]] as any[]).concat(
+        monthlyOrdersArray.map((order) => [monthNames[order.Month], order.Rate])
+      );
+      newOrderArray[0] = ["Month", "Orders"];
+      setMonthlyOrders(newOrderArray);
+
+      // All Users
+      setAllUserData({
+        title: allUserData.title,
+        servicers: ["Hairdressers", Number(AllHairdressers)],
+        clients: ["Clients", Number(AllClients)],
+      });
+
+      // Active Users
+      setActiveUserData({
+        title: activeUserData.title,
+        servicers: [activeUserData.servicers[0], CurrHairdressers],
+        clients: [activeUserData.clients[0], CurrClients],
+      });
+    }
+  }, [data]);
 
   const options = {
-    title: "BUYURMALAR KO'RSATKICHLARI",
+    title: "MONTHLY RATE OF USER ORDERS",
     titleTextStyle: {
       fontfamily: "Times New Roman Times serif",
       alignContent: "center",
@@ -52,10 +76,18 @@ function MainWindow() {
       },
     },
   };
+  const handleProgressBarVal = (Memory: number, LeftMemory: number): number => {
+    if (Memory && LeftMemory) {
+      return Memory - LeftMemory;
+    } else {
+      return 0;
+    }
+  };
+
   return (
     <div className="dashboard_container">
       <div className="dashboard__overall-users">
-        <h3>DASTURDAN FOYDALANUVCHILAR</h3>
+        <h3>ALL USERS</h3>
         <UserChart
           title={allUserData.title}
           servicers={allUserData.servicers}
@@ -63,7 +95,7 @@ function MainWindow() {
         />
       </div>
       <div className="dashboard__current-users">
-        <h3>AYNI VAQTDA FOYDALANUVCHILAR</h3>
+        <h3>ALL ACTIVE USERS</h3>
         <UserChart
           title={activeUserData.title}
           servicers={activeUserData.servicers}
@@ -72,36 +104,51 @@ function MainWindow() {
       </div>
       <div className="dashboard__info">
         <div className="dashboard__active-service">
-          <div>Amaldagi mavjud xizmatlar</div>
-          <h1>500</h1>
-          <h3>Dona</h3>
+          <div>
+            Current Active <br /> services
+          </div>
+          <h1>{statisticsInfo?.ActiveServices}</h1>
         </div>
         <div className="dashboard__black-list">
-          <div>Qora Ro'yxatga tushgan foydalanuvchilar</div>
-          <h1>500</h1>
-          <h3>Dona</h3>
+          <div>
+            Current Blocked Users <br /> Amount
+          </div>
+          <h1>{statisticsInfo?.BlockedUsers}</h1>
         </div>
         <div className="dashboard__server-memory">
-          <h3 style={{ textAlign: "center" }}>Serverning xotirasi</h3>
+          <h3 style={{ textAlign: "center" }}>The memory of Server</h3>
           <progress
-            value={75}
-            max={100}
+            value={
+              statisticsInfo?.ServerInfo.Memory !== undefined &&
+              statisticsInfo?.ServerInfo.LeftMemory !== undefined
+                ? handleProgressBarVal(
+                    statisticsInfo?.ServerInfo.Memory,
+                    statisticsInfo?.ServerInfo.LeftMemory
+                  )
+                : 0
+            }
+            max={statisticsInfo?.ServerInfo.Memory}
             style={{
               width: "95%",
               height: "30px",
               marginLeft: "10px",
             }}
           />
-          <h6 style={{ marginLeft: "10px" }}>1000MB xotiradan 700MB qoldi.</h6>
+          <h6 style={{ marginLeft: "10px" }}>
+            {statisticsInfo?.ServerInfo.LeftMemory +
+              " MB free of " +
+              statisticsInfo?.ServerInfo.Memory +
+              " MB"}
+          </h6>
         </div>
       </div>
       <div className="dashboard__order-rate">
         <Chart
           chartType="AreaChart"
-          data={allOrders}
+          data={monthlyOrders}
           options={options}
           height="100%"
-          loader={<div>Loading Chart</div>}
+          loader={<MainLoader />}
         ></Chart>
       </div>
     </div>

@@ -1,0 +1,56 @@
+.startPage-container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgb(84, 77, 77);
+  justify-content: center;
+  align-items: center;
+}
+
+.startPage-icon {
+  display: inline-flex;
+  flex-direction: column;
+  height: 15rem;
+  width: 25rem;
+  align-items: center;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+}
+.startPage-icon:hover {
+  height: 30rem;
+}
+
+.startPage-userName {
+  margin-top: 40px;
+  height: 30px;
+  width: 250px;
+}
+
+.startPage-password {
+  margin-top: 10px;
+  height: 30px;
+  width: 250px;
+}
+.startPage-submit {
+  margin-top: 10px;
+  height: 30px;
+  width: 250px;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
+.startPage-userName,
+.startPage-password,
+.startPage-submit {
+  border-radius: 5px;
+  border: 0px;
+}
+
+.startPage-submit:hover {
+  background-color: rgb(0, 0, 196);
+}

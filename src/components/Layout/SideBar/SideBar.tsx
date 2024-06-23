@@ -6,70 +6,163 @@ import settingLogo from "../../../assets/images/settings.png";
 import sendLetterLogo from "../../../assets/images/send-letter.png";
 import shoppingListLogo from "../../../assets/images/shopping-list.png";
 import usersLogo from "../../../assets/images/users.png";
-import logo from "../../../assets/images/logo.png";
+import mainLogo from "../../../assets/images/logo.png";
+import React, { useCallback, useState } from "react";
+import SIDEBAR_ITEMS from "../../../utility/SIDEBAR_ITEMS";
+import { Link } from "react-router-dom";
 
-function SideBar() {
+const SideBar = () => {
+  const [activeSideBar, setActiveSideBar] = useState<SIDEBAR_ITEMS>(
+    SIDEBAR_ITEMS.Dashboard
+  );
+
+  const handleClickSideBar = useCallback((item: SIDEBAR_ITEMS) => {
+    setActiveSideBar(item);
+  }, []);
+
   return (
     <div className="container">
       <nav className="nav-sidebar">
         <div className="sidebar__logo">
-          <div className="logo__photo"></div>
-          <div className="logo__icon"></div>
+          <Link to="/dashboard">
+            <img src={mainLogo} alt="" style={{ height: "4rem" }}></img>
+          </Link>
         </div>
         <ul className="sidebar__main">
-          <li className="sidebar__item">
-            <a href="/">
+          <li
+            className={`sidebar__item ${
+              activeSideBar === SIDEBAR_ITEMS.Dashboard ? "active" : ""
+            }`}
+          >
+            <Link
+              to="/dashboard"
+              onClick={() => {
+                handleClickSideBar(SIDEBAR_ITEMS.Dashboard);
+              }}
+            >
               <img src={statisticsLogo} alt="statisticsImg" />
               <span>Dashboard</span>
-            </a>
+            </Link>
           </li>
-          <li className="sidebar__item">
-            <a href="/users/servicer">
+          <li
+            className={`sidebar__item ${
+              activeSideBar === SIDEBAR_ITEMS.Users ? "active" : ""
+            }`}
+          >
+            <Link
+              to="/users/servicer"
+              onClick={() => {
+                handleClickSideBar(SIDEBAR_ITEMS.Users);
+              }}
+            >
               <img src={usersLogo} alt="usersImg" />
-              <span>Foydalanchilar</span>
-            </a>
+              <span>Users</span>
+            </Link>
             <ul>
-              <li>
-                <a href="/users/servicer">
-                  <span> Xizmat beruvchilar</span>
-                </a>
+              <li
+                className={`sidebar__item ${
+                  activeSideBar === SIDEBAR_ITEMS.Hairdressers ? "active" : ""
+                }`}
+              >
+                <Link
+                  to="/users/servicer"
+                  onClick={() => {
+                    handleClickSideBar(SIDEBAR_ITEMS.Hairdressers);
+                  }}
+                >
+                  <span> Hairdressers</span>
+                </Link>
               </li>
-              <li>
-                <a href="/users/client">
-                  <span> Xizmat oluvchilar</span>
-                </a>
+              <li
+                className={`sidebar__item ${
+                  activeSideBar === SIDEBAR_ITEMS.Clients ? "active" : ""
+                }`}
+              >
+                <Link
+                  to="/users/client"
+                  onClick={() => {
+                    handleClickSideBar(SIDEBAR_ITEMS.Clients);
+                  }}
+                >
+                  <span> Clients</span>
+                </Link>
               </li>
             </ul>
           </li>
-          <li className="sidebar__item">
-            <a href="/orders">
+          <li
+            className={`sidebar__item ${
+              activeSideBar === SIDEBAR_ITEMS.AllOrders ? "active" : ""
+            }`}
+          >
+            <Link
+              to="/orders"
+              onClick={() => {
+                handleClickSideBar(SIDEBAR_ITEMS.AllOrders);
+              }}
+            >
               <img src={shoppingListLogo} alt="shoppingListImg" />
-              <span>Buyurtmalar</span>
-            </a>
+              <span>All Orders</span>
+            </Link>
           </li>
-          <li className="sidebar__item">
-            <a href="/comments">
+          <li
+            className={`sidebar__item ${
+              activeSideBar === SIDEBAR_ITEMS.Comments ? "active" : ""
+            }`}
+          >
+            <Link
+              to="/comments"
+              onClick={() => {
+                handleClickSideBar(SIDEBAR_ITEMS.Comments);
+              }}
+            >
               <img src={commentLogo} alt="commentImg" />
-              <span> Sharhlar</span>
-            </a>
+              <span> Comments</span>
+            </Link>
           </li>
-          <li className="sidebar__item">
-            <a href="/appeals">
+          <li
+            className={`sidebar__item ${
+              activeSideBar === SIDEBAR_ITEMS.Appeals ? "active" : ""
+            }`}
+          >
+            <Link
+              to="/appeals"
+              onClick={() => {
+                handleClickSideBar(SIDEBAR_ITEMS.Appeals);
+              }}
+            >
               <img src={applicationLogo} alt="applicationImg" />
-              <span> Murojatlar</span>
-            </a>
+              <span> Appeals</span>
+            </Link>
           </li>
-          <li className="sidebar__item">
-            <a href="/messages">
+          <li
+            className={`sidebar__item ${
+              activeSideBar === SIDEBAR_ITEMS.Message ? "active" : ""
+            }`}
+          >
+            <Link
+              to="/messages"
+              onClick={() => {
+                handleClickSideBar(SIDEBAR_ITEMS.Message);
+              }}
+            >
               <img src={sendLetterLogo} alt="sendLetterImg" />
-              <span> Xabar yuborish</span>
-            </a>
+              <span> Message</span>
+            </Link>
           </li>
-          <li className="sidebar__item">
-            <a href="/settings">
+          <li
+            className={`sidebar__item ${
+              activeSideBar === SIDEBAR_ITEMS.Setting ? "active" : ""
+            }`}
+          >
+            <Link
+              to="/settings"
+              onClick={() => {
+                handleClickSideBar(SIDEBAR_ITEMS.Setting);
+              }}
+            >
               <img src={settingLogo} alt="settingImg" />
-              <span>Sozlamalar</span>
-            </a>
+              <span>Setting</span>
+            </Link>
           </li>
         </ul>
         <div className="sidebar__info">
@@ -80,6 +173,19 @@ function SideBar() {
       </nav>
     </div>
   );
-}
+};
 
 export default SideBar;
+
+//Note;
+/*Bu yerda men UI re-render qilib yuborish muammosiga yo'liqidim. 
+Yani  Sidebar item almashganda UI bir render bo'lib sidebar item background-color joyiga qaytib qolayotgan edi.
+Yechim: 
+1. <a/> to <Link/> ga o'zgartirdim. <a></a> ishlatsam useCallback tufayli Navigation ishlame qoldi.
+2. useState va useCallBack dan foydalandim
+
+ChatGPT: 
+1. **Use `Link` from `react-router-dom`:** This ensures that the application uses client-side routing and prevents full-page reloads.
+2. **State Management with `useState` and `useCallback`:** This helps to manage the active sidebar item state effectively, avoiding unnecessary re-renders.
+3. **CSS for Active Links:** The CSS ensures the active link styling is applied correctly.
+*/

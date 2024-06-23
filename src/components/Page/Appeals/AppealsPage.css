@@ -105,3 +105,37 @@
   grid-row: 2;
   grid-column: 7;
 }
+
+.appeals-info__container {
+  display: grid;
+  grid-template-columns: 8% 30% 10% 15% 12% 12% 13%;
+  grid-template-rows: repeat(auto, 30px);
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.appeals-page__pagination {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.appeals-page__pagination button {
+  width: 50px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.appeals-page__pagination button:hover {
+  background-color: rgb(19, 56, 241);
+  color: white;
+  cursor: pointer;
+}
+
+.appeals-page__pagination button:last-of-type {
+  margin-left: auto;
+}
